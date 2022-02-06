@@ -17,7 +17,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql
+      - image: mysql:5.7
         name: mysql-pod
         env:
         - name: MYSQL_ROOT_PASSWORD

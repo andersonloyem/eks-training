@@ -21,7 +21,10 @@ spec:
         name: mysql-pod
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: admin
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
         - name: MYSQL_DATABASE
           value: admin
         - name: MYSQL_USER
@@ -41,3 +44,13 @@ spec:
 #          type: Directory
 #        persistentVolumeClaim:
 #          claimName: mysql-pv-claim
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: kubernetes.io/basic-auth
+stringData:
+  password: admin

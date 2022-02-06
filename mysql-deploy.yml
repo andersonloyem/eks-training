@@ -9,15 +9,15 @@ spec:
   selector:
     matchLabels:
       app: mysql
-#  strategy:
-#    type: Recreate
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: mysql
     spec:
       containers:
-      - image: mysql:5
+      - image: mysql
         name: mysql-pod
         env:
         - name: MYSQL_ROOT_PASSWORD
